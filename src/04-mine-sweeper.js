@@ -21,8 +21,46 @@
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new Error('Not implemented');
+function minesweeper(matrix) {
+  const tmp = matrix.map((ele) => ele.slice());
+  let count = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix.length; j++) {
+      if (matrix[i][j] === true) {
+        tmp[i][j] = 1;
+        count = 0;
+        // eslint-disable-next-line no-continue
+        continue;
+      }
+      if ((i - 1) >= 0 && matrix[i - 1][j] === true) {
+        count += 1;
+      }
+      if ((j + 1) < matrix.length && matrix[i][j + 1] === true) {
+        count += 1;
+      }
+      if ((i + 1) < matrix.length && matrix[i + 1][j] === true) {
+        count += 1;
+      }
+      if ((j - 1) >= 0 && matrix[i][j - 1] === true) {
+        count += 1;
+      }
+      if ((i - 1) > 0 && (j - 1) >= 0 && matrix[i - 1][j - 1] === true) {
+        count += 1;
+      }
+      if ((i - 1) > 0 && (j + 1) < matrix.length && matrix[i - 1][j + 1] === true) {
+        count += 1;
+      }
+      if ((i + 1) < matrix.length && (j - 1) >= 0 && matrix[i + 1][j - 1] === true) {
+        count += 1;
+      }
+      if ((i + 1) < matrix.length && (j + 1) < matrix.length && matrix[i + 1][j + 1] === true) {
+        count += 1;
+      }
+      tmp[i][j] = count;
+      count = 0;
+    }
+  }
+  return tmp;
 }
 
 module.exports = minesweeper;
