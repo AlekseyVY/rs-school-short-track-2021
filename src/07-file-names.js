@@ -13,8 +13,20 @@
  * the output should be ["file", "file(1)", "image", "file(1)(1)", "file(2)"]
  *
  */
-function renameFiles(/* names */) {
-  throw new Error('Not implemented');
+function renameFiles(names) {
+  let tmp = 1;
+  // eslint-disable-next-line array-callback-return
+  names.map((ele, idx) => {
+    for (let i = idx + 1; i < names.length; i++) {
+      if (ele === names[i]) {
+        // eslint-disable-next-line no-param-reassign
+        names[i] = `${names[i]}(${tmp})`;
+        tmp += 1;
+      }
+    }
+    tmp = 1;
+  });
+  return names;
 }
 
 module.exports = renameFiles;
