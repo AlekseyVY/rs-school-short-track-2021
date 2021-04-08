@@ -1,4 +1,4 @@
-// onst ListNode = require('../extensions/list-node');
+// const ListNode = require('../extensions/list-node');
 function ListNode(x) {
   this.value = x;
   this.next = null;
@@ -48,6 +48,10 @@ class Queue {
     this.tail = this.tail.prev;
     this.tail.next = null;
     this.length--;
+    if (this.size === 0) {
+      this.head = null;
+      this.tail = null;
+    }
     return value;
   }
 }
