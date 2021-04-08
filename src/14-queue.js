@@ -22,13 +22,11 @@ class Queue {
   }
 
   get size() {
-    ListNode();
     return this.length;
   }
 
   enqueue(element) {
     const node = new ListNode(element);
-    ListNode();
     if (this.head === null) {
       this.head = node;
       this.tail = node;
@@ -46,7 +44,6 @@ class Queue {
   }
 
   dequeue() {
-    ListNode();
     const { value } = this.tail;
     this.tail = this.tail.prev;
     this.tail.next = null;
